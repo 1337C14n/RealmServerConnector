@@ -4,10 +4,10 @@ import java.util.Observable;
 import java.util.Observer;
 import packets.Packet;
 
-public abstract class RealmConnector implements Runnable, Observer{
+public abstract class RealmServerConnector implements Runnable, Observer{
   
   protected volatile static RealmConnection connection;
-  private static RealmConnector connector;
+  private static RealmServerConnector connector;
   
   private static String address;
   private static int port;
@@ -16,9 +16,9 @@ public abstract class RealmConnector implements Runnable, Observer{
   
   protected volatile static boolean connected;
   
-  public RealmConnector(String address, int port){
-    RealmConnector.address = address;
-    RealmConnector.port = port;
+  public RealmServerConnector(String address, int port){
+    RealmServerConnector.address = address;
+    RealmServerConnector.port = port;
     connected = false;
     connector = this;
     connect();
@@ -88,7 +88,7 @@ public abstract class RealmConnector implements Runnable, Observer{
   }
 
   public static void setType(String type) {
-    RealmConnector.type = type;
+    RealmServerConnector.type = type;
   }
 
   public static boolean isConnected() {
